@@ -1,16 +1,10 @@
-# untitled1
+# Catalog of russian cars
 
-A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+![image](https://github.com/Karyqqe/catalog_of_rus_cars/assets/133410772/f5a9a366-9d92-4396-aa15-8bf50cf31d7c)
 
-A few resources to get you started if this is your first Flutter project:
+![image](https://github.com/Karyqqe/catalog_of_rus_cars/assets/133410772/7b4c8ad5-69cb-4f0b-b1fd-d6c354e9de3d)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![image](https://github.com/Karyqqe/catalog_of_rus_cars/assets/133410772/8d78d485-e5d4-40a3-8685-10a3758e5c0c)
