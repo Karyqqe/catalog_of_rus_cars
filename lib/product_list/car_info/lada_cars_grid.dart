@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled1/colors/colors.dart';
 import 'package:untitled1/product_list/card_product.dart';
 import 'package:untitled1/product_list/car_info/lada_car_info.dart';
+import 'package:untitled1/secondary screens/basket.dart';
 
 class LadaCarsGrid extends StatelessWidget {
   const LadaCarsGrid({super.key});
@@ -57,6 +58,18 @@ class LadaCarsGrid extends StatelessWidget {
                       'Цена: ${ladaCars[index].price}',
                       style: const TextStyle(fontSize: 18),
                     ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child:  ElevatedButton(onPressed: () {Car_in_basket.add(ladaCars[index]);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Basket(car: ladaCars[index]),
+                        ),
+                      );
+                      }, child: Icon(Icons.shopping_cart)),
+                    )
+
                   ],
                 ),
               ),
