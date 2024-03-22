@@ -3,9 +3,16 @@ import 'package:untitled1/colors/colors.dart';
 import 'package:untitled1/product_list/card_product.dart';
 import 'package:untitled1/product_list/car_info/lada_car_info.dart';
 import 'package:untitled1/secondary screens/basket.dart';
+import 'package:untitled1/secondary screens/favorite.dart';
 
-class LadaCarsGrid extends StatelessWidget {
+class LadaCarsGrid extends StatefulWidget {
   const LadaCarsGrid({super.key});
+
+  @override
+  State<LadaCarsGrid> createState() => _LadaCarsGridState();
+}
+
+class _LadaCarsGridState extends State<LadaCarsGrid> {
 
   @override
   Widget build(BuildContext context) {
@@ -37,42 +44,76 @@ class LadaCarsGrid extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(13),
                     color: ColorsApplication.container),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(11.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(13),
-                        child: Image.network(
-                          ladaCars[index].imageUrl.isNotEmpty
-                              ? ladaCars[index].imageUrl[0]
-                              : '',
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: 100,
+
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(11.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(13),
+                          child: Image.network(
+                            ladaCars[index].imageUrl.isNotEmpty
+                                ? ladaCars[index].imageUrl[0]
+                                : '',
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: 100,
+                          ),
                         ),
                       ),
-                    ),
-                    Text(ladaCars[index].name),
-                    Text(
-                      'Цена: ${ladaCars[index].price}',
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child:  ElevatedButton(onPressed: () {Car_in_basket.add(ladaCars[index]);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Basket(car: ladaCars[index]),
-                        ),
-                      );
-                      }, child: Icon(Icons.shopping_cart)),
-                    )
+                      Text(ladaCars[index].name),
+                      Text(
+                        'Цена: ${ladaCars[index].price}',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                         Align(
+                           alignment: Alignment.bottomCenter,
+                           child:
+                               Row(
+                                 children: [
+                                   ElevatedButton(onPressed: () {
+                                     setState(() {
+                                       ladaCars[index].inBasket = !ladaCars[index].inBasket;
 
-                  ],
+                                       Car_in_basket.add(ladaCars[index]);
+
+
+                                     });
+                                   },
+                                       child: Icon(
+                                         ladaCars[index].inBasket ? Icons.shopping_basket : Icons.shopping_basket_outlined,
+                                         color: ladaCars[index].inBasket ? Colors.deepPurple : Colors.grey,
+                                       )),
+                                   ElevatedButton(onPressed: () {
+                                     setState(() {
+                                       ladaCars[index].isLiked = !ladaCars[index].isLiked;
+
+                                         Car_favorite.add(ladaCars[index]);
+
+
+                                     });
+                                   }, child: Icon(
+                                     ladaCars[index].isLiked ? Icons.favorite : Icons.favorite_border,
+                                     color: ladaCars[index].isLiked ? Colors.red : Colors.grey,
+                                   ),
+
+
+
+                                   ),
+                                 ],
+                               )
+
+                         ),
+
+
+
+
+
+
+                    ],
+                  ),
                 ),
-              ),
+
             );
           },
         ),
@@ -94,15 +135,25 @@ class LadaCarsGrid extends StatelessWidget {
                 },
               ),
               IconButton(
-                icon: const Icon(Icons.search),
+                icon: const Icon(Icons.favorite_outlined),
                 onPressed: () {
-                  // Действие при нажатии на кнопку "Search"
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Favorite(),
+                    ),
+                  );
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.shopping_cart),
                 onPressed: () {
-                  // Действие при нажатии на кнопку "Shopping Cart"
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Basket(),
+                    ),
+                  );
                 },
               ),
               IconButton(

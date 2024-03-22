@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/product_list/car_info/lada_car_info.dart';
+
 import 'package:untitled1/product_list/product_list.dart';
 import 'package:untitled1/reg_autorization/reg_autorization.dart';
-import 'package:untitled1/secondary%20screens/basket.dart';
+
 
 void main() => runApp(const MyApp());
 
@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Registration Form',
       theme: ThemeData(primarySwatch: Colors.blue),
       initialRoute: '/',

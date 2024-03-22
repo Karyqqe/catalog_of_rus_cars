@@ -7,11 +7,11 @@ import 'package:flutter/widgets.dart';
 import 'package:untitled1/product_list/card_product.dart';
 import 'package:untitled1/colors/colors.dart';
 
-List<LadaCar>Car_in_basket = [];
+List<LadaCar>Car_favorite = [];
 
-class Basket extends StatelessWidget {
+class Favorite extends StatelessWidget {
 
-  const Basket({Key? key}) : super(key: key);
+  const Favorite({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +24,21 @@ class Basket extends StatelessWidget {
       body: Column(
         children: <Widget> [
           Expanded(child:  ListView.builder(
-            itemCount: Car_in_basket.length,
+            itemCount: Car_favorite.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(padding: EdgeInsets.all(8),
                 child:  ElevatedButton(onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CardScreen(car: Car_in_basket[index],),
+                      builder: (context) => CardScreen(car: Car_favorite[index],),
                     ),
                   );
                 },
                   child: ListTile(
-                    leading: Image.network(Car_in_basket[index].imageUrl.toString()),
-                    title: Text(Car_in_basket[index].name),
-                    subtitle: Text(Car_in_basket[index].price),
+                    leading: Image.network(Car_favorite[index].imageUrl.toString()),
+                    title: Text(Car_favorite[index].name),
+                    subtitle: Text(Car_favorite[index].price),
                   ),
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),
 
@@ -50,6 +50,7 @@ class Basket extends StatelessWidget {
                 ),
               );
 
+
             },
 
 
@@ -59,12 +60,12 @@ class Basket extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(padding: EdgeInsets.all(8),
-               child: ElevatedButton(onPressed: () {},
-                   child: Text('ORDER',
-                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-                   ),
-                 style: ButtonStyle( backgroundColor: MaterialStateProperty.all<Color>(Colors.deepOrange),),
-               ),
+              child: ElevatedButton(onPressed: () {},
+                child: Text('ORDER',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+                style: ButtonStyle( backgroundColor: MaterialStateProperty.all<Color>(Colors.deepOrange),),
+              ),
             ),
 
           )
@@ -74,4 +75,3 @@ class Basket extends StatelessWidget {
     );
   }
 }
-

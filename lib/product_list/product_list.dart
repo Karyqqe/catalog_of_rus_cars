@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/colors/colors.dart';
 import 'package:untitled1/product_list/car_info/lada_cars_grid.dart';
+import 'package:untitled1/secondary screens/basket.dart';
 
 class ProductList extends StatelessWidget {
   const ProductList({super.key});
@@ -12,6 +13,12 @@ class ProductList extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Basket(),
+              ),
+            );
 
           }, icon: const Icon(Icons.shopping_cart),)
         ],

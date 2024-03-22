@@ -4,6 +4,8 @@ class LadaCar {
   final String price;
   final String description;
   final String youtubeVideo;
+  bool isLiked = false;
+  bool inBasket = false;
 
   LadaCar({required this.name, required this.imageUrl, required this.price, required this.description, required this.youtubeVideo});
 }
