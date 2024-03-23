@@ -27,7 +27,7 @@ class _LadaCarsGridState extends State<LadaCarsGrid> {
             crossAxisCount: 2,
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 10.0,
-            childAspectRatio: 0.97,
+            childAspectRatio: 0.87,
           ),
           itemCount: ladaCars.length,
           itemBuilder: (context, index) {
@@ -70,8 +70,10 @@ class _LadaCarsGridState extends State<LadaCarsGrid> {
                            alignment: Alignment.bottomCenter,
                            child:
                                Row(
+                                 mainAxisAlignment: MainAxisAlignment.center,
                                  children: [
-                                   ElevatedButton(onPressed: () {
+
+                                     ElevatedButton(onPressed: () {
                                      setState(() {
                                        ladaCars[index].inBasket = !ladaCars[index].inBasket;
 
@@ -84,11 +86,12 @@ class _LadaCarsGridState extends State<LadaCarsGrid> {
                                          ladaCars[index].inBasket ? Icons.shopping_basket : Icons.shopping_basket_outlined,
                                          color: ladaCars[index].inBasket ? Colors.deepPurple : Colors.grey,
                                        )),
-                                   ElevatedButton(onPressed: () {
+
+                                     ElevatedButton(onPressed: () {
                                      setState(() {
                                        ladaCars[index].isLiked = !ladaCars[index].isLiked;
 
-                                         Car_favorite.add(ladaCars[index]);
+                                       Car_favorite.add(ladaCars[index]);
 
 
                                      });
@@ -100,6 +103,8 @@ class _LadaCarsGridState extends State<LadaCarsGrid> {
 
 
                                    ),
+
+
                                  ],
                                )
 

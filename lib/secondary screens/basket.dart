@@ -9,10 +9,15 @@ import 'package:untitled1/colors/colors.dart';
 
 List<LadaCar>Car_in_basket = [];
 
-class Basket extends StatelessWidget {
+class Basket extends StatefulWidget {
 
   const Basket({Key? key}) : super(key: key);
 
+  @override
+  State<Basket> createState() => _BasketState();
+}
+
+class _BasketState extends State<Basket> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,28 +32,56 @@ class Basket extends StatelessWidget {
             itemCount: Car_in_basket.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(padding: EdgeInsets.all(8),
-                child:  ElevatedButton(onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CardScreen(car: Car_in_basket[index],),
-                    ),
+                child: Stack(
+                  children: [
+
+                    ElevatedButton(onPressed: () {
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                        builder: (context) => CardScreen(car: Car_in_basket[index],),
+                        ),
+                        );
+                        },
+
+                      child: ListTile(
+                        leading:  ClipRRect(borderRadius: BorderRadius.circular(12),
+                          child: Image.network(Car_in_basket[index].imageUrl.first.toString()),),
+                        title: Text(Car_in_basket[index].name),
+                        subtitle: Text(Car_in_basket[index].price),
+                      ),
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),),
+
+
+                            ),
+                    Positioned(
+                      top: 5,
+                      right: 5,
+                      child: IconButton(
+                        icon: Icon(Icons.close),
+                        onPressed: () {
+                          setState(() {
+
+                            Car_in_basket.removeAt(index);
+
+                          });
+                        },
+
+                      ),
+                    )
+                          ],
+                        ),
+
+
+
+
+
+
+
+
+
+
                   );
-                },
-                  child: ListTile(
-                    leading: Image.network(Car_in_basket[index].imageUrl.toString()),
-                    title: Text(Car_in_basket[index].name),
-                    subtitle: Text(Car_in_basket[index].price),
-                  ),
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),
-
-
-
-
-
-                  ),
-                ),
-              );
 
             },
 
