@@ -67,6 +67,7 @@ class LadaCarsGrid extends StatelessWidget {
                           builder: (context) => Basket(car: ladaCars[index]),
                         ),
                       );
+
                       }, child: Icon(Icons.shopping_cart)),
                     )
 
@@ -102,7 +103,7 @@ class LadaCarsGrid extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.shopping_cart),
                 onPressed: () {
-                  // Действие при нажатии на кнопку "Shopping Cart"
+
                 },
               ),
               IconButton(

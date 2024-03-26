@@ -17,6 +17,8 @@ class Basket extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             leading: Image.network(car.imageUrl[index]),
+            title: Text(car.name),
+            subtitle: Text(car.description),
           );
     },
       ),
