@@ -1,9 +1,13 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:untitled1/product_list/car_info/lada_car_info.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:untitled1/secondary screens/basket.dart';
+import 'package:untitled1/secondary screens/favorite.dart';
 
 
 class CardScreen extends StatefulWidget {
@@ -51,7 +55,7 @@ class _CardScreenState extends State<CardScreen> {
           Expanded(
             flex: 4,
             child: SizedBox(
-            height: 300, // Вы можете установить желаемую высоту изображения
+
             child: Stack(
               children: [
                 PageView.builder(
@@ -89,7 +93,7 @@ class _CardScreenState extends State<CardScreen> {
           ),
 
           Expanded(
-            flex: 2,
+            flex: 3,
             child:  Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -100,6 +104,49 @@ class _CardScreenState extends State<CardScreen> {
                         fontSize: 20, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 10),
                 Text('Price: ${widget.car.price}'),
+
+
+
+
+                Row(
+
+                  children: [
+
+                    ElevatedButton(onPressed: () {
+                      setState(() {
+                        widget.car.inBasket = !widget.car.inBasket;
+
+                        Car_in_basket.add(widget.car);
+
+
+                      });
+                    },
+                        child: Icon(
+                          widget.car.inBasket ? Icons.shopping_basket : Icons.shopping_basket_outlined,
+                          color: widget.car.inBasket ? Colors.deepPurple : Colors.grey,
+                        )),
+
+                    ElevatedButton(onPressed: () {
+                      setState(() {
+                        widget.car.isLiked = !widget.car.isLiked;
+
+                        Car_favorite.add(widget.car);
+
+
+                      });
+                    }, child: Icon(
+                      widget.car.isLiked ? Icons.favorite : Icons.favorite_border,
+                      color: widget.car.isLiked ? Colors.red : Colors.grey,
+                    ),
+
+
+
+                    ),
+
+
+                  ],
+                )
+
               ],
             ),
           ),
@@ -134,7 +181,7 @@ class _CardScreenState extends State<CardScreen> {
 
           child: YoutubePlayer(
             controller: YoutubePlayerController(
-              initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=5pvinfRkODU&ab_channel=%D0%A8%D0%B0%D1%85%D0%BC%D0%B0%D1%82%D1%8B-%D1%8D%D1%82%D0%BE%D0%9A%D1%80%D1%83%D1%82%D0%BE').toString(),
+              initialVideoId: YoutubePlayer.convertUrlToId(widget.car.youtubeVideo).toString(),
               flags: YoutubePlayerFlags(
                 autoPlay: true,
                 mute: false,
