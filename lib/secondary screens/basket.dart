@@ -11,6 +11,8 @@ List<LadaCar>Car_in_basket = [];
 
 class Basket extends StatefulWidget {
 
+
+
   const Basket({Key? key}) : super(key: key);
 
   @override
@@ -18,6 +20,23 @@ class Basket extends StatefulWidget {
 }
 
 class _BasketState extends State<Basket> {
+
+
+
+
+  void increment (LadaCar car){
+    setState(() {
+      car.countInBasket++;
+    });
+  }
+  void decrement (LadaCar car){
+    setState(() {
+      if( car.countInBasket > 0){
+        car.countInBasket--;
+      }
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +63,7 @@ class _BasketState extends State<Basket> {
                       );
                     },
 
+
                       child: ListTile(
                         leading:  ClipRRect(borderRadius: BorderRadius.circular(12),
                           child: Image.network(Car_in_basket[index].imageUrl.first.toString()),),
@@ -68,16 +88,25 @@ class _BasketState extends State<Basket> {
                         },
 
                       ),
+                    ),
+
+                    Positioned(
+                        top: 10,
+                        right: 50,
+                        child: Row(
+                          children: [
+                            IconButton(onPressed: () {
+                              decrement(Car_in_basket[index]);
+                            }, icon: Icon(Icons.remove),),
+
+                            Text("${Car_in_basket[index].countInBasket}"),
+
+                            IconButton(onPressed: () {increment(Car_in_basket[index]);}, icon: Icon(Icons.add),),
+                          ],
+                        )
                     )
                   ],
                 ),
-
-
-
-
-
-
-
 
 
 

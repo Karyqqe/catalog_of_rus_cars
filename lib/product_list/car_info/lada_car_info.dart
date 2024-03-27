@@ -6,6 +6,7 @@ class LadaCar {
   final String youtubeVideo;
   bool isLiked = false;
   bool inBasket = false;
+  int countInBasket = 1;
 
   LadaCar({required this.name, required this.imageUrl, required this.price, required this.description, required this.youtubeVideo});
 }
