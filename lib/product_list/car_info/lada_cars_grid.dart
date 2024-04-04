@@ -5,6 +5,7 @@ import 'package:untitled1/product_list/car_info/lada_car_info.dart';
 import 'package:untitled1/secondary screens/basket.dart';
 import 'package:untitled1/secondary screens/favorite.dart';
 import 'package:untitled1/secondary%20screens/shopping%20list.dart';
+import 'package:untitled1/secondary screens/profile.dart';
 
 class LadaCarsGrid extends StatefulWidget {
   const LadaCarsGrid({super.key});
@@ -96,85 +97,52 @@ class _LadaCarsGridState extends State<LadaCarsGrid> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
 
-                            Padding(padding: EdgeInsets.only(left: 2, right: 2),
-                            child:  ElevatedButton(onPressed: () {
-                              showModalBottomSheet(context: context, builder: (BuildContext context){
-                                return Padding(padding: const EdgeInsets.all(16),
-                                  child: Container(
-                                  child: Scaffold(
-                                    body: Column(
-                                      children: [
-                                        Text("BUYING", style: TextStyle(fontSize: 34),),
-                                        ElevatedButton(onPressed: () {
-                                          Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                          builder: (context) => CardScreen(car: ladaCars[index],),
-                                          ),
-                                          );
-
-                                        }, child:
-                                        ListTile(
-                                          leading:  ClipRRect(borderRadius: BorderRadius.circular(12),
-                                            child: Image.network(ladaCars[index].imageUrl.first.toString()),),
-                                          title: Text(ladaCars[index].name),
-                                          subtitle: Text(ladaCars[index].price),
-                                        ),),
 
 
-                                        Padding(padding: EdgeInsets.only(top: 16),
 
-                                            child:
-                                        ElevatedButton(onPressed: () {Car_in_shopping_list.add(ladaCars[index]);}, child: Text("TO PAY"),
-                                          
-                                          style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.deepOrange)),)
+
+
+
+
+                             Padding(padding: EdgeInsets.only(left: 2, right: 2),
+                              child:
+                              ElevatedButton(onPressed: () {
+                                setState(() {
+                                  ladaCars[index].inBasket = !ladaCars[index].inBasket;
+
+                                  Car_in_basket.add(ladaCars[index]);
+
+
+                                });
+                              },
+                                  child: Icon(
+                                    ladaCars[index].inBasket ? Icons.shopping_basket : Icons.shopping_basket_outlined,
+                                    color: ladaCars[index].inBasket ? Colors.deepPurple : Colors.grey,
+                                  )),),
+
+
+
+
+                               Padding(padding: EdgeInsets.only(left: 2, right: 2),
+                                  child:
+
+                                  ElevatedButton(onPressed: () {
+                                    setState(() {
+                                      ladaCars[index].isLiked = !ladaCars[index].isLiked;
+
+                                      Car_favorite.add(ladaCars[index]);
+
+
+                                    });
+                                  }, child: Icon(
+                                    ladaCars[index].isLiked ? Icons.favorite : Icons.favorite_border,
+                                    color: ladaCars[index].isLiked ? Colors.red : Colors.grey,
                                   ),
 
-                                      ],
-                                    ),
+
+
                                   ),),
 
-                                );
-                              },);
-                            },
-                                child: Text("BUY NOW")),),
-
-
-                             Padding(padding: EdgeInsets.only(left: 2, right: 2),
-                            child:
-                            ElevatedButton(onPressed: () {
-                              setState(() {
-                                ladaCars[index].inBasket = !ladaCars[index].inBasket;
-
-                                Car_in_basket.add(ladaCars[index]);
-
-
-                              });
-                            },
-                                child: Icon(
-                                  ladaCars[index].inBasket ? Icons.shopping_basket : Icons.shopping_basket_outlined,
-                                  color: ladaCars[index].inBasket ? Colors.deepPurple : Colors.grey,
-                                )),),
-
-                             Padding(padding: EdgeInsets.only(left: 2, right: 2),
-                                child:
-
-                               ElevatedButton(onPressed: () {
-                              setState(() {
-                                ladaCars[index].isLiked = !ladaCars[index].isLiked;
-
-                                Car_favorite.add(ladaCars[index]);
-
-
-                              });
-                            }, child: Icon(
-                              ladaCars[index].isLiked ? Icons.favorite : Icons.favorite_border,
-                              color: ladaCars[index].isLiked ? Colors.red : Colors.grey,
-                            ),
-
-
-
-                            ),),
 
 
                           ],
@@ -224,7 +192,7 @@ class _LadaCarsGridState extends State<LadaCarsGrid> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Basket(),
+                          builder: (context) => Favorite(),
                         ),
                       );
                     },
@@ -253,7 +221,7 @@ class _LadaCarsGridState extends State<LadaCarsGrid> {
               IconButton(
                 icon: const Icon(Icons.person),
                 onPressed: () {
-                  // Действие при нажатии на кнопку "Profile"
+                  Navigator.pushReplacementNamed(context, '/to_profile');
                 },
               ),
             ],

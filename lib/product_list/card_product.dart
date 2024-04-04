@@ -8,6 +8,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:untitled1/secondary screens/basket.dart';
 import 'package:untitled1/secondary screens/favorite.dart';
+import 'package:untitled1/secondary screens/shopping list.dart';
 
 
 class CardScreen extends StatefulWidget {
@@ -111,6 +112,63 @@ class _CardScreenState extends State<CardScreen> {
                 Row(
 
                   children: [
+
+                    Expanded(
+                      flex: 2,
+                      child:
+                      Padding(padding: EdgeInsets.only(left: 2, right: 2),
+
+                        child:
+                        ElevatedButton(onPressed: () {
+                          showModalBottomSheet(context: context, builder: (BuildContext context){
+                            return Padding(padding: const EdgeInsets.all(16),
+                              child: Container(
+                                child: Scaffold(
+                                  body: Column(
+                                    children: [
+                                      Text("BUYING", style: TextStyle(fontSize: 34),),
+                                      ElevatedButton(onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => CardScreen(car: widget.car),
+                                          ),
+                                        );
+
+                                      }, child:
+                                      ListTile(
+                                        leading:  ClipRRect(borderRadius: BorderRadius.circular(12),
+                                          child: Image.network(widget.car.imageUrl.first.toString()),),
+                                        title: Text(widget.car.name),
+                                        subtitle: Text(widget.car.price),
+                                      ),),
+
+
+                                      Padding(padding: EdgeInsets.only(top: 16),
+
+                                          child:
+                                          ElevatedButton(onPressed: () {Car_in_shopping_list.add(widget.car);
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => ShopList(),
+                                            ),
+                                          );
+                                            }, child: Text("TO PAY"),
+
+                                            style: ButtonStyle(
+
+                                                backgroundColor: MaterialStateProperty.all<Color>(Colors.deepOrange)),)
+                                      ),
+
+                                    ],
+                                  ),
+                                ),),
+
+                            );
+                          },);
+                        },
+                            child: Text("BUY NOW")),),),
 
                     ElevatedButton(onPressed: () {
                       setState(() {
