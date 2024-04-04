@@ -35,6 +35,10 @@
 ![image](https://github.com/Karyqqe/catalog_of_rus_cars/assets/133410772/db299416-753f-4a52-896f-a18b128bd6f2)
 (история покупок)
 
+![image](https://github.com/Karyqqe/catalog_of_rus_cars/assets/133410772/f78560ee-7d1c-410e-87ba-d155f486259b)
+(профиль пользоватля)
+
+
 
 
 
